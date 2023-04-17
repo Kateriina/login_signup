@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:login_signup/mongodb.dart';
+import 'package:login_signup/signup.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -15,21 +16,24 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Demo',
-      theme: ThemeData(
-        // This is the theme of your application.
-        //
-        // Try running your application with "flutter run". You'll see the
-        // application has a blue toolbar. Then, without quitting the app, try
-        // changing the primarySwatch below to Colors.green and then invoke
-        // "hot reload" (press "r" in the console where you ran "flutter run",
-        // or simply save your changes to "hot reload" in a Flutter IDE).
-        // Notice that the counter didn't reset back to zero; the application
-        // is not restarted.
-        primarySwatch: Colors.blue,
-      ),
-      home: const MyHomePage(title: 'Flutter Demo Home Page'),
-    );
+        title: 'Flutter Demo',
+        theme: ThemeData(
+          // This is the theme of your application.
+          //
+          // Try running your application with "flutter run". You'll see the
+          // application has a blue toolbar. Then, without quitting the app, try
+          // changing the primarySwatch below to Colors.green and then invoke
+          // "hot reload" (press "r" in the console where you ran "flutter run",
+          // or simply save your changes to "hot reload" in a Flutter IDE).
+          // Notice that the counter didn't reset back to zero; the application
+          // is not restarted.
+          primarySwatch: Colors.blue,
+        ),
+        home: const MyHomePage(title: 'Flutter Demo Home Page'),
+        debugShowCheckedModeBanner: false,
+        routes: <String, WidgetBuilder>{
+          '/signup': (BuildContext context) => new SignupPage()
+        });
   }
 }
 
@@ -65,7 +69,7 @@ class _MyHomePageState extends State<MyHomePage> {
     });
   }
 
-  @override
+  /*@override
   Widget build(BuildContext context) {
     // This method is rerun every time setState is called, for instance as done
     // by the _incrementCounter method above.
@@ -115,5 +119,116 @@ class _MyHomePageState extends State<MyHomePage> {
         child: const Icon(Icons.add),
       ), // This trailing comma makes auto-formatting nicer for build methods.
     );
+  }*/
+  @override
+  Widget build(BuildContext context) {
+    return new Scaffold(
+        body: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: <Widget>[
+          Container(
+              child: Stack(
+            children: <Widget>[
+              Container(
+                padding: EdgeInsets.fromLTRB(15, 110, 0, 0),
+                child: Text(
+                  "Hello",
+                  style: TextStyle(fontSize: 40, fontWeight: FontWeight.bold),
+                ),
+              )
+            ],
+          )),
+          Container(
+            padding: EdgeInsets.only(top: 35, left: 20, right: 30),
+            child: Column(
+              children: <Widget>[
+                TextField(
+                  decoration: InputDecoration(
+                      labelText: 'EMAIL',
+                      labelStyle: TextStyle(
+                          fontFamily: 'Montserrat',
+                          fontWeight: FontWeight.bold,
+                          color: Colors.grey),
+                      focusedBorder: UnderlineInputBorder(
+                        borderSide: BorderSide(color: Colors.green),
+                      )),
+                ),
+                SizedBox(
+                  height: 20,
+                ),
+                TextField(
+                  decoration: InputDecoration(
+                      labelText: 'PASSWORD',
+                      labelStyle: TextStyle(
+                          fontFamily: 'Montserrat',
+                          fontWeight: FontWeight.bold,
+                          color: Colors.grey),
+                      focusedBorder: UnderlineInputBorder(
+                        borderSide: BorderSide(color: Colors.green),
+                      )),
+                ),
+                SizedBox(
+                  height: 5.0,
+                ),
+                Container(
+                    alignment: Alignment(1, 0),
+                    padding: EdgeInsets.only(top: 15, left: 20),
+                    child: InkWell(
+                      child: Text(
+                        'Forgot Password',
+                        style: TextStyle(
+                            color: Colors.black,
+                            fontWeight: FontWeight.bold,
+                            fontFamily: 'Montserrat',
+                            decoration: TextDecoration.underline),
+                      ),
+                    )),
+                SizedBox(height: 40,),
+                Container(
+                  height: 40,
+                  child: Material(
+                    borderRadius: BorderRadius.circular(20),
+                    shadowColor: Colors.greenAccent,
+                    color: Colors.black,
+                    elevation: 7,
+                    child: GestureDetector(
+                      onTap: (){},
+                      child: Center(
+                        child: Text(
+                          'LOGIN',
+                          style: TextStyle(
+                            color: Colors.white,
+                            fontWeight: FontWeight.bold,
+                            fontFamily: 'Montserrat'
+                          ),
+                        ),
+                      ),
+                    ),
+                  ),
+                ),
+                SizedBox(height: 15,),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: <Widget>[
+                    InkWell(
+                      onTap: (){},
+                      child: Text(
+                        'Register',
+                        style: TextStyle(
+                          color: Colors.blueGrey,
+                          fontFamily: 'Monserrat',
+                          fontWeight: FontWeight.bold,
+                          decoration: TextDecoration.underline
+                        ),
+                      ),
+                    )
+                  ],
+                )
+              ],
+            ),
+          )
+        ]));
   }
 }
+
+//15:05
