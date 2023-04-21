@@ -21,6 +21,6 @@ class MongoDatabase{
     //print(await collection.find().toList());
 
     //await collection.update(where.eq("name", "user1"), modify.set("name", "user2"));
-    await collection.deleteOne({"name": "user2"});
+    //await collection.deleteOne({"name": "user2"});
   }
 }
